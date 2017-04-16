@@ -1,9 +1,18 @@
+# Pull McAfee Agent GUID, and Custom Property #1 from MA
+# Custom Property #1 is set to "Y" when the host is requested to check Web Server
+# for files to pull
 $output = & "C:\Program Files\McAfee\Agent\cmdagent" -i
 $line = $output[3] -replace '^\s+','' -split '\s+'
 $MAGuid = $line[1]
 $line = $output[16] -replace '^\s+','' -split '\s+'
 $PullRequest = $line[1]
 
+# Check Web Server for file with same name as Agent GUID
+# This file will contain a single line of file to be copied to new location
+# Recommend http server that can scale well
+# Testing can be done with Python
+
+# Change "http://127.0.0.1:8000/" to your preferred host
 if ($PullRequest -eq "N") {
 	$url = "http://127.0.0.1:8000/" + $MAGuid
 	$output = "fileToPull"
