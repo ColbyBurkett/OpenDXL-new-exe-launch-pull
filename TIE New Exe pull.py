@@ -31,7 +31,7 @@ logger = logging.getLogger(__name__)
 config = DxlClientConfig.create_dxl_config_from_file(CONFIG_FILE)
 
 # Connect to ePO with WebAPI
-mc = mcafee.client('192.168.11.103','8443','admin','IsecG123!','https','json')
+mc = mcafee.client('{epoip}','8443','admin','{pwd}','https','json')
 #ePOTag = 'Suspect'
 
 class MyFirstInstanceCallback(FirstInstanceCallback):
